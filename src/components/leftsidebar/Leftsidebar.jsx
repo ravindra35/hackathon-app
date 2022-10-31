@@ -2,55 +2,55 @@ import React from "react";
 
 const Leftsidebar = () => {
   return (
-    <div class="col-lg-3">
-      <aside class="sidebar static">
-        <div class="widget stick-widget">
-          <h4 class="widget-title">Your page</h4>
-          <div class="your-page">
+    <div className="col-lg-3">
+      <aside className="sidebar static">
+        <div className="widget stick-widget">
+          <h4 className="widget-title">Your page</h4>
+          <div className="your-page">
             <figure>
               <a href="#" title="">
                 <img src="images/resources/friend-avatar9.jpg" alt="" />
               </a>
             </figure>
-            <div class="page-meta">
-              <a href="#" title="" class="underline">
+            <div className="page-meta">
+              <a href="#" title="" className="underline">
                 My page
               </a>
               <span>
-                <i class="ti-comment"></i>
+                <i className="ti-comment"></i>
                 <a href="insight.html" title="">
                   Messages <em>9</em>
                 </a>
               </span>
               <span>
-                <i class="ti-bell"></i>
+                <i className="ti-bell"></i>
                 <a href="insight.html" title="">
                   Notifications <em>2</em>
                 </a>
               </span>
             </div>
-            <div class="page-likes">
-              <ul class="nav nav-tabs likes-btn">
-                <li class="nav-item">
-                  <a class="active" href="#link1" data-toggle="tab">
+            <div className="page-likes">
+              <ul className="nav nav-tabs likes-btn">
+                <li className="nav-item">
+                  <a className="active" href="#link1" data-toggle="tab">
                     likes
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="" href="#link2" data-toggle="tab">
+                <li className="nav-item">
+                  <a className="" href="#link2" data-toggle="tab">
                     views
                   </a>
                 </li>
               </ul>
-              <div class="tab-content">
-                <div class="tab-pane active fade show " id="link1">
+              <div className="tab-content">
+                <div className="tab-pane active fade show " id="link1">
                   <span>
-                    <i class="ti-heart"></i>884
+                    <i className="ti-heart"></i>884
                   </span>
                   <a href="#" title="weekly-likes">
                     35 new likes this week
                   </a>
-                  <div class="users-thumb-list">
+                  <div className="users-thumb-list">
                     <a href="#" title="Anderw" data-toggle="tooltip">
                       <img src="images/resources/userlist-1.jpg" alt="" />
                     </a>
@@ -74,14 +74,14 @@ const Leftsidebar = () => {
                     </a>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="link2">
+                <div className="tab-pane fade" id="link2">
                   <span>
-                    <i class="ti-eye"></i>440
+                    <i className="ti-eye"></i>440
                   </span>
                   <a href="#" title="weekly-likes">
                     440 new views this week
                   </a>
-                  <div class="users-thumb-list">
+                  <div className="users-thumb-list">
                     <a href="#" title="Anderw" data-toggle="tooltip">
                       <img src="images/resources/userlist-1.jpg" alt="" />
                     </a>

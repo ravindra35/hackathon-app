@@ -6,11 +6,11 @@ import RightSidebar from "../rightsidebar/RightSidebar";
 const Container = () => {
   return (
     <section>
-      <div class="gap gray-bg">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="row" id="page-contents">
+      <div className="gap gray-bg">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="row" id="page-contents">
                 <Leftsidebar />
                 <Main />
                 <RightSidebar />
