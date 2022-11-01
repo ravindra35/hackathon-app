@@ -13,21 +13,21 @@ const UploadFile = (props) => {
     });
     console.log(src);
     console.log(postType);
-    props?.handleChange(src, postType);
+    props?.handleChange(src, "mediaUrl");
     setFileList(newFileList);
   };
   let labelName = "Upload";
   let acceptType = "";
   switch (postType) {
-    case "image":
+    case "Image":
       labelName = "Upload Photo";
       acceptType = "image/*";
       break;
-    case "video":
+    case "Video":
       labelName = "Upload Video";
       acceptType = "video/mp4,video/x-m4v,video/*";
       break;
-    case "document":
+    case "Document":
       labelName = "Upload Document";
       acceptType="application/pdf" 
       break;

@@ -27,13 +27,13 @@ const CreatePost = () => {
               ></textarea> */}
             <Button
               className="create-post-btn"
-              onClick={() => handleOpenModal("text")}
+              onClick={() => handleOpenModal("Text")}
             >
               {"Create a Post"}
             </Button>
             <div className="attachments">
               <ul className="post-icons">
-                <li  onClick={() => handleOpenModal("image")}>
+                <li  onClick={() => handleOpenModal("Image")}>
                   <i
                     className="fa fa-image  fa-lg"
                     style={{ color: "white" }}
@@ -41,14 +41,14 @@ const CreatePost = () => {
                   ></i>
                   <span className="pl-2 post-icon-text">{"Photo"}</span>
                 </li>
-                <li  onClick={() => handleOpenModal("video")}>
+                <li  onClick={() => handleOpenModal("Video")}>
                   <i
                     className="fa fa-video-camera  fa-lg"
                     style={{ color: "white" }}
                   ></i>
                   <span className="pl-2 post-icon-text">{"Video"}</span>
                 </li>
-                <li onClick={() => handleOpenModal("document")}>
+                <li onClick={() => handleOpenModal("Document")}>
                   <i
                     className="fa fa-file  fa-lg"
                     style={{ color: "white" }}
