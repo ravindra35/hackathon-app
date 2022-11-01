@@ -1,11 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const CreatePost = () => {
+  const { userDetails } = useSelector((state) => state.userData);
   return (
     <div className="central-meta">
       <div className="new-postbox">
         <figure>
-          <img src="images/resources/admin2.jpg" alt="" />
+          <img src={userDetails?.image} alt="UserImage" />
         </figure>
         <div className="newpst-input">
           <form method="post">
