@@ -11,9 +11,9 @@ const initialState = {
 
 export const getUserDetails = createAsyncThunk(
   "settings/getUserDetails",
-  async (stringblock, thunkAPI) => {
+  async (request, thunkAPI) => {
     try {
-      return await settingsService.getUserDetails(stringblock);
+      return await settingsService.getUserDetails(request);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

@@ -1,30 +1,18 @@
+import { Button } from "antd";
 import React, { useState } from "react";
-import UploadImageModal from "./UploadImageModal";
+import UploadPostModal from "./UploadPostModal";
 
 const CreatePost = () => {
-  const initialValues = {
-    text: "",
-    image: "",
-    video: "",
-    document: "",
-    type: "",
-    category: "",
+
+  const [postType, setPostType] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => {
+    setShowModal(false);
   };
-  const modalInitialValues={
-    image: false,
-    video: false,
-    document: false,
-  }
-  const [post, setPost] = useState(initialValues);
-  const [showModal, setShowModal] = useState(modalInitialValues);
-  const handleClose=()=>{
-    setShowModal(modalInitialValues)
-  }
-  const handleImageSubmit=()=>{
-  }
-  const handleOpenModal=(name)=>{
-    setShowModal({...showModal,[name]:true})
-  }
+  const handleOpenModal = (name) => {
+    setPostType(name);
+    setShowModal(true);
+  };
   return (
     <>
       <div className="central-meta">
@@ -33,45 +21,54 @@ const CreatePost = () => {
             <img src="images/resources/admin2.jpg" alt="" />
           </figure>
           <div className="newpst-input">
-            <form method="post">
-              <textarea
+            {/* <textarea
                 rows="2"
-                placeholder="write something"
-                value={post?.text}
-              ></textarea>
-              <div className="attachments">
-                <ul>
-                  <li>
-                    <i className="fa fa-image" onClick={()=>handleOpenModal('image')}></i>
-                    <label className="fileContainer">
-                      {/* <input
-                        type="file"
-                        accept="image/png, image/gif, image/jpeg"
-                      /> */}
-                    </label>
-                  </li>
-                  <li>
-                    <i className="fa fa-video-camera"></i>
-                    <label className="fileContainer">
-                      <input type="file" />
-                    </label>
-                  </li>
-                  <li>
-                    <i className="fa fa-file"></i>
-                    <label className="fileContainer">
-                      <input type="file" />
-                    </label>
-                  </li>
-                  <li>
+                placeholder="write something" onClick={()=>handleOpenModal('text')}
+              ></textarea> */}
+            <Button
+              className="create-post-btn"
+              onClick={() => handleOpenModal("text")}
+            >
+              {"Create a Post"}
+            </Button>
+            <div className="attachments">
+              <ul className="post-icons">
+                <li  onClick={() => handleOpenModal("image")}>
+                  <i
+                    className="fa fa-image  fa-lg"
+                    style={{ color: "white" }}
+                   
+                  ></i>
+                  <span className="pl-2 post-icon-text">{"Photo"}</span>
+                </li>
+                <li  onClick={() => handleOpenModal("video")}>
+                  <i
+                    className="fa fa-video-camera  fa-lg"
+                    style={{ color: "white" }}
+                  ></i>
+                  <span className="pl-2 post-icon-text">{"Video"}</span>
+                </li>
+                <li onClick={() => handleOpenModal("document")}>
+                  <i
+                    className="fa fa-file  fa-lg"
+                    style={{ color: "white" }}
+                  ></i>
+                  <span className="pl-2 post-icon-text">{"Document"}</span>
+                </li>
+                {/* <li>
                     <button type="submit">Post</button>
-                  </li>
-                </ul>
-              </div>
-            </form>
+                  </li> */}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      {showModal?.image && <UploadImageModal handleClose={handleClose} handleImageSubmit={handleImageSubmit} />}
+      {showModal && (
+        <UploadPostModal
+          handleClose={handleClose}
+          postType={postType}
+        />
+      )}
     </>
   );
 };
