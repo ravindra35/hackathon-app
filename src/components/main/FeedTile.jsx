@@ -1,6 +1,54 @@
 import { Button } from "antd";
+import { useRef, useState } from "react";
+import Comments from "./Comments";
+
+const comments = [
+  {
+    description:
+      "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post",
+    createdBy: "Janice Griffith",
+  },
+  {
+    description:
+      "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post",
+    createdBy: "Jason borne",
+  },
+  {
+    description:
+      "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post",
+    createdBy: "Jason borne",
+  },
+  {
+    description:
+      "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post",
+    createdBy: "Jason borne",
+  },
+];
 
 const FeedTile = (props) => {
+  const showMoreRef = useRef();
+
+  const [page, setPage] = useState({
+    skip: 0,
+    take: 2,
+  });
+  const handlePageChange = (status = "more") => {
+    if (status === "less") {
+      setPage({
+        skip: 0,
+        take: 2,
+      });
+    } else {
+      setPage({
+        take: page.take + 2,
+        skip: 0,
+      });
+      if (showMoreRef.current) {
+        showMoreRef.current?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+  const { skip, take } = page;
   return (
     <div className="central-meta item">
       <div className="user-post">
@@ -77,51 +125,30 @@ const FeedTile = (props) => {
         </div>
         <div className="coment-area">
           <ul className="we-comet">
+            {comments.slice(0, 0 + take)?.map((j) => (
+              <Comments item={j} />
+            ))}
             <li>
-              <div className="comet-avatar">
-                <img src="images/resources/comet-1.jpg" alt="" />
-              </div>
-              <div className="we-comment">
-                <div className="coment-head">
-                  <h5>
-                    <a href="time-line.html" title="">
-                      Jason borne
-                    </a>
-                  </h5>
-                  <span>1 year ago</span>
+              <div className="d-flex justify-content-center align-items-center bz-services-showMore">
+                <div ref={showMoreRef}>
+                  {comments.length > take && (
+                    <span
+                      className="btn btn-link  align-baseline bz-cursor-pointer p-0 showmore"
+                      onClick={() => handlePageChange()}
+                    >
+                      View More
+                    </span>
+                  )}
+                  {comments.length <= take && comments.length > 2 && (
+                    <span
+                      className="btn btn-link  align-baseline bz-cursor-pointer p-0 showmore"
+                      onClick={() => handlePageChange("less")}
+                    >
+                      View Less
+                    </span>
+                  )}
                 </div>
-                <p>
-                  we are working for the dance and sing songs. this car is very
-                  awesome for the youngster. please vote this car and like our
-                  post
-                </p>
               </div>
-            </li>
-            <li>
-              <div className="comet-avatar">
-                <img src="images/resources/comet-1.jpg" alt="" />
-              </div>
-              <div className="we-comment">
-                <div className="coment-head">
-                  <h5>
-                    <a href="time-line.html" title="">
-                      Donald Trump
-                    </a>
-                  </h5>
-                  <span>1 week ago</span>
-                </div>
-                <p>
-                  we are working for the dance and sing songs. this video is
-                  very awesome for the youngster. please vote this video and
-                  like our channel
-                  <i className="em em-smiley"></i>
-                </p>
-              </div>
-            </li>
-            <li>
-              <a href="#" title="" className="showmore underline">
-                more comments
-              </a>
             </li>
             <li className="post-comment">
               <div className="comet-avatar">
