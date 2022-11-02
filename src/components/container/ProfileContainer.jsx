@@ -6,7 +6,7 @@ import Profile from "../profile/profile";
 import Cover from "../profile/cover";
 import Hobbies from "../profile/hobbies";
 
-const Container = () => {
+const ProfileContainer = () => {
   return (
     <section>
       <div className="gap gray-bg">
@@ -14,8 +14,10 @@ const Container = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="row" id="page-contents">
-                <Leftsidebar />
-                <Main />
+                <Leftsidebar  />
+                <Profile />
+                <Cover />
+                <Hobbies />
                 <RightSidebar />
               </div>
             </div>
@@ -26,4 +28,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default ProfileContainer;
