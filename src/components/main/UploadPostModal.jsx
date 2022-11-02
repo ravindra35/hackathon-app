@@ -112,19 +112,21 @@ const UploadPostModal = (props) => {
                 ))}
               </div>
 
-              <div style={{ height: "200px", overflow: "auto" }}>
                 {postData?.mediaType === "Image" && (
+                  <div style={{ height: "200px", overflow: "auto" }}>
                   <img src={postData?.mediaUrl} />
+                </div>
                 )}
                 {postData?.mediaType === "Document" && (
                   <iframe src={postData?.mediaUrl} />
                 )}
-              </div>
               {postData?.mediaType === "Video" && (
-                <video width="500" controls>
+                 <div style={{ height: "200px", overflow: "auto" }}>
+                <video width="450" controls>
                   <source src={postData?.mediaUrl} type="video/mp4" />
                   Your browser does not support HTML video.
                 </video>
+                </div>
               )}
             </>
           )}
