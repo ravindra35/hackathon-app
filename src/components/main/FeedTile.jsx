@@ -20,16 +20,25 @@ const FeedTile = (props) => {
             <div className="description">
               <p>{props?.item?.description}</p>
             </div>
-            {props?.item?.mediaType ==="Image" && (<>
-            
-            </>)}
-            {props?.item?.mediaType ==="Video" && (<>
-
-            </>)}
-            {props?.item?.mediaType ==="Document" && (<>
-
-            </>)}
-            <img src="images/resources/user-post.jpg" alt="" />
+            {props?.item?.mediaType === "Image" && (
+              <>
+                <img src={props?.item?.mediaUrl} />
+              </>
+            )}
+            {props?.item?.mediaType === "Video" && (
+              <>
+                <video width="100%" controls>
+                  <source src={props?.item?.mediaUrl} type="video/mp4" />
+                  Your browser does not support HTML video.
+                </video>
+              </>
+            )}
+            {props?.item?.mediaType === "Document" && (
+              <>
+                <iframe src={props?.item?.mediaUrl} />
+              </>
+            )}
+            {/* <img src="images/resources/user-post.jpg" alt="" /> */}
             <div className="we-video-info">
               <ul>
                 <li>
