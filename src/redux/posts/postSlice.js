@@ -2,7 +2,38 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import settingsService from "../service";
 
 const initialState = {
-  postData: [],
+  postData: [
+    {
+      "postId": 17,
+      "description": "Hi This is my first post-7",
+      "category": "Travel",
+      "mediaType": "Text",
+      "mediaUrl": "",
+      "createdBy": "pnadipineni@evoketechnologies.com",
+      "profileId": 2,
+      "createdAt": 1667294454000
+    },
+    {
+      "postId": 16,
+      "description": "Hi This is my first post-6",
+      "category": "Travel",
+      "mediaType": "Text",
+      "mediaUrl": "",
+      "createdBy": "pnadipineni@evoketechnologies.com",
+      "profileId": 2,
+      "createdAt": 1667294449000
+    },
+    {
+      "postId": 15,
+      "description": "Hi This is my first post-5",
+      "category": "Food",
+      "mediaType": "Text",
+      "mediaUrl": "",
+      "createdBy": "pnadipineni@evoketechnologies.com",
+      "profileId": 2,
+      "createdAt": 1667294440000
+    }
+  ],
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -46,7 +77,6 @@ export const postSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.message = "Got Posts";
-        console.log(action);
         state.userDetails = action.payload;
       })
       .addCase(getPostDetails.rejected, (state, action) => {
@@ -66,7 +96,6 @@ export const postSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.message = "Post Saved Successfully";
-        console.log(action);
       })
       .addCase(savePost.rejected, (state, action) => {
         state.isLoading = false;

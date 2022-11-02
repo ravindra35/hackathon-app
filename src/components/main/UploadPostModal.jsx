@@ -16,7 +16,6 @@ const tagsData = [
 ];
 const UploadPostModal = (props) => {
   const data = useSelector((state) => state);
-  console.log(data?.postData);
   const { postType } = props;
   const dispatch = useDispatch();
   const initialValues = {
@@ -40,7 +39,6 @@ const UploadPostModal = (props) => {
     props?.handleClose()
   };
   const handleChange = (e, name) => {
-    console.log(e);
     setPostData({ ...postData, [name]: e });
 
   };

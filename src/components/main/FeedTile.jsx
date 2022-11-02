@@ -1,4 +1,5 @@
-const FeedTile = () => {
+const FeedTile = (props) => {
+  console.log(props)
   return (
     <div className="central-meta item">
       <div className="user-post">

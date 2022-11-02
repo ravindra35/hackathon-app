@@ -5,7 +5,7 @@ const getUserDetails = async () => {
   const response = await axios.get(
     `https://dummyjson.com/users/1`
   );
-  console.log(response);
+  // console.log(response);
 
   return response.data;
 };

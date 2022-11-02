@@ -36,7 +36,6 @@ export const userSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.message = "Got user profile";
-        console.log(action)
         state.userDetails = action.payload;
       })
       .addCase(getUserDetails.rejected, (state, action) => {

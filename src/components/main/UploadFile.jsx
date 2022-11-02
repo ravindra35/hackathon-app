@@ -5,14 +5,11 @@ const UploadFile = (props) => {
   const { postType } = props;
   const [fileList, setFileList] = useState([]);
   const onChange = async ({ fileList: newFileList }) => {
-    console.log(newFileList);
     const src = await new Promise((resolve) => {
       const reader = new FileReader();
       reader.readAsDataURL(newFileList[0].originFileObj);
       reader.onload = () => resolve(reader.result);
     });
-    console.log(src);
-    console.log(postType);
     props?.handleChange(src, "mediaUrl");
     setFileList(newFileList);
   };

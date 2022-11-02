@@ -1,9 +1,11 @@
 import FeedTile from "./FeedTile";
+import { useSelector } from "react-redux"
 
 const NewsFeed = () => {
+  const {postData}=useSelector((state) => state?.postData);
   return (
     <div className="loadMore">
-      <FeedTile />
+      {postData?.map(i=> <FeedTile item={i} />)}
       <div className="central-meta item">
         <div className="user-post">
           <div className="friend-info">
