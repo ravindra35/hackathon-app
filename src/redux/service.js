@@ -17,13 +17,28 @@ const getPostDetails = async () => {
 
   // return response.data;
 };
+const getPostComments = async (req) => {    
+  const response = await axios.get(
+    `https://dummyjson.com/comments/post/5`
+  );
+  console.log(response);
+
+  return response.data;
+};
 const savePost = async (req) => {  
   console.log(req)  
   // const response = await axios.post(
-  //   `https://jsonplaceholder.typicode.com/posts`,req
+  //   `https://dummyjson.com/comments/add`,req
   // );
   // return response;
 };
+const saveComment = async (req) => {  
+  console.log(req)  
+  const response = await axios.post(
+    `https://dummyjson.com/comments/add`,req
+  );
+  return response;
+};
 
-const settingsService = { getUserDetails,savePost,getPostDetails };
+const settingsService = { getUserDetails,savePost,getPostDetails,saveComment,getPostComments };
 export default settingsService;

@@ -60,11 +60,31 @@ export const getPostDetails = createAsyncThunk(
     }
   }
 );
+export const getPostComments = createAsyncThunk(
+  "settings/getPostComments",
+  async (request, thunkAPI) => {
+    try {
+      return await settingsService.getPostComments(request);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 export const savePost = createAsyncThunk(
   "settings/savePost",
   async (request, thunkAPI) => {
     try {
       return await settingsService.savePost(request);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const saveComment = createAsyncThunk(
+  "settings/saveComment",
+  async (request, thunkAPI) => {
+    try {
+      return await settingsService.saveComment(request);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -108,6 +128,24 @@ export const postSlice = createSlice({
         state.message = "Post Saved Successfully";
       })
       .addCase(savePost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message =
+          action.payload?.response?.data?.errors?.msg ||
+          action.payload?.message ||
+          "Something went wrong!";
+      })
+      .addCase(saveComment.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(saveComment.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = "Comment Saved Successfully";
+      })
+      .addCase(saveComment.rejected, (state, action) => {
         state.isLoading = false;
         state.isSuccess = false;
         state.isError = true;

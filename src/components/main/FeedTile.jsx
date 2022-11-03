@@ -1,54 +1,9 @@
-import { Button } from "antd";
-import { useRef, useState } from "react";
-import Comments from "./Comments";
-
-const comments = [
-  {
-    description:
-      "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post",
-    createdBy: "Janice Griffith",
-  },
-  {
-    description:
-      "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post",
-    createdBy: "Jason borne",
-  },
-  {
-    description:
-      "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post",
-    createdBy: "Jason borne",
-  },
-  {
-    description:
-      "we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post",
-    createdBy: "Jason borne",
-  },
-];
+import CommentContainer from "./CommentContainer";
 
 const FeedTile = (props) => {
-  const showMoreRef = useRef();
-
-  const [page, setPage] = useState({
-    skip: 0,
-    take: 2,
-  });
-  const handlePageChange = (status = "more") => {
-    if (status === "less") {
-      setPage({
-        skip: 0,
-        take: 2,
-      });
-    } else {
-      setPage({
-        take: page.take + 2,
-        skip: 0,
-      });
-      if (showMoreRef.current) {
-        showMoreRef.current?.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-  const { skip, take } = page;
+  console.log(props)
+  //props?.fetchPost using post Id
+ 
   return (
     <div className="central-meta item">
       <div className="user-post">
@@ -123,8 +78,20 @@ const FeedTile = (props) => {
             </div>
           </div>
         </div>
-        <div className="coment-area">
+        <CommentContainer postId={props?.item?.postId} comments={props?.item?.comments}/>
+        {/* <div className="coment-area">
           <ul className="we-comet">
+          <li className="post-comment">
+              <div className="comet-avatar">
+                <img src="images/resources/comet-1.jpg" alt="" />
+              </div>
+              <div className="post-comt-box">
+                <div>
+                  <textarea placeholder="Post your comment" ></textarea>
+                  <Button>Submit</Button>
+                </div>
+              </div>
+            </li>  
             {comments.slice(0, 0 + take)?.map((j) => (
               <Comments item={j} />
             ))}
@@ -150,19 +117,9 @@ const FeedTile = (props) => {
                 </div>
               </div>
             </li>
-            <li className="post-comment">
-              <div className="comet-avatar">
-                <img src="images/resources/comet-1.jpg" alt="" />
-              </div>
-              <div className="post-comt-box">
-                <div>
-                  <textarea placeholder="Post your comment"></textarea>
-                  <Button>Submit</Button>
-                </div>
-              </div>
-            </li>
+           
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );

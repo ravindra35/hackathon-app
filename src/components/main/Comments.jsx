@@ -17,7 +17,7 @@ const Comments = (props) => {
             <span>1 year ago</span>
           </div>
           <p>
-           {props?.item?.description}
+           {props?.item?.body}
           </p>
         </div>
       </li>
