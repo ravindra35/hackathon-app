@@ -4,9 +4,10 @@ import Main from "../main/Main";
 import RightSidebar from "../rightsidebar/RightSidebar";
 import Profile from "../profile/profile";
 import Cover from "../profile/cover";
-import Hobbies from "../profile/hobbies";
+import InfoPane from "../infopane/InfoPane";
+import Social from "../social/social";
 
-const Container = () => {
+const SocialMediaContainer = () => {
   return (
     <section>
       <div className="gap gray-bg">
@@ -14,10 +15,12 @@ const Container = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="row" id="page-contents">
+                <Cover />
                 <div className="col-lg-3">
                   <Leftsidebar />
+                  <InfoPane />
                 </div>
-                <Main />
+                <Social />
                 <RightSidebar />
               </div>
             </div>
@@ -28,4 +31,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default SocialMediaContainer;

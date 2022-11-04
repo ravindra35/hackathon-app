@@ -4,7 +4,7 @@ import Main from "../main/Main";
 import RightSidebar from "../rightsidebar/RightSidebar";
 import Profile from "../profile/profile";
 import Cover from "../profile/cover";
-import Hobbies from "../profile/hobbies";
+import InfoPane from "../infopane/InfoPane";
 
 const ProfileContainer = () => {
   return (
@@ -14,10 +14,13 @@ const ProfileContainer = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="row" id="page-contents">
-                <Leftsidebar  />
-                <Profile />
                 <Cover />
-                <Hobbies />
+                <div className="col-lg-3">
+                  <Leftsidebar />
+                  <InfoPane />
+                </div>
+
+                <Profile />
                 <RightSidebar />
               </div>
             </div>

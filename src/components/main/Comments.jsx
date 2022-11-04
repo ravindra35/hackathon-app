@@ -1,6 +1,8 @@
+import moment from "moment/moment";
 import React from "react";
 
 const Comments = (props) => {
+  const commentedDate=moment(props?.item?.createdAt).fromNow()
   return (
     <>
       <li>
@@ -11,13 +13,13 @@ const Comments = (props) => {
           <div className="coment-head">
             <h5>
               <a href="time-line.html" title="">
-              {props?.item?.createdBy}
+              {props?.item?.userDisplayName}
               </a>
             </h5>
-            <span>1 year ago</span>
+            <span>{commentedDate}</span>
           </div>
           <p>
-           {props?.item?.body}
+           {props?.item?.description}
           </p>
         </div>
       </li>

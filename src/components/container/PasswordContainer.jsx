@@ -2,11 +2,12 @@ import React from "react";
 import Leftsidebar from "../leftsidebar/Leftsidebar";
 import Main from "../main/Main";
 import RightSidebar from "../rightsidebar/RightSidebar";
-import Profile from "../profile/profile";
-import Cover from "../profile/cover";
-import Hobbies from "../profile/hobbies";
 
-const Container = () => {
+import Cover from "../profile/cover";
+import Password from "../password/password";
+import InfoPane from "../infopane/InfoPane";
+
+const PasswordContainer = () => {
   return (
     <section>
       <div className="gap gray-bg">
@@ -14,10 +15,14 @@ const Container = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="row" id="page-contents">
+                <Cover />
                 <div className="col-lg-3">
                   <Leftsidebar />
+                  <InfoPane />
                 </div>
-                <Main />
+
+                <Password />
+
                 <RightSidebar />
               </div>
             </div>
@@ -28,4 +33,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default PasswordContainer;

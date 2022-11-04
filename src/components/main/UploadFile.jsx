@@ -10,7 +10,7 @@ const UploadFile = (props) => {
       reader.readAsDataURL(newFileList[0].originFileObj);
       reader.onload = () => resolve(reader.result);
     });
-    props?.handleChange(src, "mediaUrl");
+    props?.handleUpdateMedia(newFileList[0]?.originFileObj,src);
     setFileList(newFileList);
   };
   let labelName = "Upload";

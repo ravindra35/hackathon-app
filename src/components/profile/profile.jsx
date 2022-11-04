@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Button } from "antd";
 
 const Profile = () => {
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    mobile: "",
+    phone: "",
     project: "",
     designation: "",
     department: "",
@@ -13,7 +15,15 @@ const Profile = () => {
     city: "",
     country: "",
   });
-
+  const [btnloading, setBtnloading] = useState(false);
+  useEffect(() => {
+    axios.get("http://localhost:9004/profile/getbyid/1").then((res) => {
+      let response = res.data.payload;
+      // console.log(responseHobbies.split(","));
+      // setMyHobbies(response.hobbies.split(","));
+      setState(response);
+    });
+  }, []);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setState((prevProps) => ({
@@ -23,10 +33,20 @@ const Profile = () => {
   };
 
   const onSubmit = (e) => {
-    console.log(e, "event form");
     e.preventDefault();
+    setBtnloading(true);
     console.log(state, "state");
-    return false;
+    axios
+      .post("http://localhost:9004/profile/create", state)
+      .then((response) => {
+        console.log(response, "api response");
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        setBtnloading(false);
+      });
   };
 
   return (
@@ -37,7 +57,11 @@ const Profile = () => {
             <i className="ti-info-alt"></i> Edit Basic Information
           </h5>
 
-          <form method="post" onSubmit={onSubmit}>
+          <form
+            method="post"
+            onSubmit={onSubmit}
+            style={{ color: "white", textColor: "white" }}
+          >
             <div className="form-group half">
               <input
                 type="text"
@@ -112,12 +136,12 @@ const Profile = () => {
             <div className="form-group half">
               <input
                 type="text"
-                name="mobile"
-                value={state.mobile}
+                name="phone"
+                value={state.phone}
                 required="required"
                 onChange={handleInputChange}
               />
-              <label className="control-label" htmlFor="mobile">
+              <label className="control-label" htmlFor="phone">
                 Mobile
               </label>
               <i className="mtrl-select"></i>
@@ -460,19 +484,31 @@ const Profile = () => {
                 <option value="ZWE">Zimbabwe</option>
               </select>
             </div>
-            <div className="form-group">
-              <textarea rows="4" id="textarea" required="required"></textarea>
-              <label className="control-label" htmlFor="textarea">
-                About Me
-              </label>
-              <i className="mtrl-select"></i>
-            </div>
+
             <div className="submit-btns">
-              <button type="button" className="mtr-btn">
-                <span>Cancel</span>
-              </button>
               <button type="submit" className="mtr-btn">
-                <span>Update</span>
+                {btnloading && (
+                  <span className="ant-btn-loading-icon">
+                    <span
+                      role="img"
+                      aria-label="loading"
+                      className="anticon anticon-loading anticon-spin"
+                    >
+                      <svg
+                        viewBox="0 0 1024 1024"
+                        focusable="false"
+                        data-icon="loading"
+                        width="1em"
+                        height="1em"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path>
+                      </svg>
+                    </span>
+                  </span>
+                )}
+                <span> Update</span>
               </button>
             </div>
           </form>
